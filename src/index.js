@@ -1,15 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
   // your code here
   const taskList = [] //global array of task object
 
   const form = document.querySelector('#create-task-form')
   form.addEventListener('submit', (e) => {
     e.preventDefault()
+    const test = e.target.elements['new-task-description']
+    console.log(test)
     const task = {
       name: e.target.elements[0].value,
       priority: e.target.elements[1].value,
       date: e.target.elements[2].value
     }
+    console.log(e.target.elements)
     if (e.target.elements[0].value) {
       taskList.push(task)
       createToDo(taskList)
@@ -76,4 +78,3 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.parentNode.remove()
     })
   }
-})
