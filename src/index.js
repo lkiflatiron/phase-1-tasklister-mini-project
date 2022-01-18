@@ -4,14 +4,17 @@
   const form = document.querySelector('#create-task-form')
   form.addEventListener('submit', (e) => {
     e.preventDefault()
-    const test = e.target.elements['new-task-description']
-    console.log(test)
+    //another way to get elements passed in from e (event object), using the name attribute
+    const test = e.target['new-task-description'].value //cause it has dashes in the element name attribute
+    const test1 = e.target.prioritiesList.value
+    console.log(test,test1)
+
     const task = {
       name: e.target.elements[0].value,
       priority: e.target.elements[1].value,
       date: e.target.elements[2].value
     }
-    console.log(e.target.elements)
+
     if (e.target.elements[0].value) {
       taskList.push(task)
       createToDo(taskList)
@@ -39,7 +42,6 @@
         li.textContent = `${li.textContent} / ${task.date}`
       }
 
-      console.log(task.date)
       li = colorTasks(task, li)
   
       ul.appendChild(li)
